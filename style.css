@@ -50,9 +50,20 @@ a {
 }
 
 ul {
+  padding-left: 0;
+}
+
+li {
   /* 목록 스타일을 제거 */
   list-style: none;
-  padding-left: 0;
+}
+
+button {
+  /* 버튼의 기본속성 제거 */
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
 }
 
 /* Typography */
@@ -89,7 +100,7 @@ p {
 #navbar {
   display: flex;
   justify-content: space-between;
-  background-color: skyblue;
+  background-color: #b8b6f5;
   align-items: center;
   color: var(--color-white);
   padding: 16px;
@@ -116,5 +127,33 @@ p {
 }
 
 .navbar__menu__item:hover {
-  background-color: var(--color-dark-blue);
+  background-color: #7c79bd;
+}
+
+/* Home */
+#home {
+  background: url("imgs/home-background.png") center/cover no-repeat;
+  padding: 40px;
+  text-align: center;
+}
+
+.home__avatar {
+  width: 200px;
+  height: 250px;
+  border-radius: 50%;
+  border: 2px solid #b8b6f5;
+}
+
+.home__title,
+.home__description {
+  color: var(--color-black);
+}
+
+.home__contact {
+  font-size: var(--font-regular);
+  font-weight: var(--weight-bold);
+  margin: 24px;
+  padding: 8px 12px;
+  border: 2px solid var(--color-black);
+  border-radius: var(--size-border-radius);
 }
