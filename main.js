@@ -13,6 +13,7 @@ document.addEventListener('scroll', () => {
     }
 });
 
+// Handle scrolling when tapping on the navbar menu
 // navbar 메뉴를 눌렀을때 스크롤링 되게 만든다.
 const navbarMenu = document.querySelector('.navbar__menu');
 navbarMenu.addEventListener('click', (event) => {
@@ -21,8 +22,18 @@ navbarMenu.addEventListener('click', (event) => {
     if(link == null) {
         return;
     }
-
-    console.log(event.target.dataset.link);
-    const scrollTo = document.querySelector(link);
-    scrollTo.scrollIntoView({behavior: "smooth"});
+    scrollIntoView(link);
 });
+
+// Handle click on "contact me" button on home
+// Home화면의 contact me 버튼 클릭시 하단의 contact화면으로 스크롤링 된게 만든다.
+
+const homeContactBtn = document.querySelector('.home__contact');
+homeContactBtn.addEventListener('click', () => {
+    scrollIntoView('#contact');
+});
+
+function scrollIntoView (selector) {
+    const scrollTo = document.querySelector(selector);
+    scrollTo.scrollIntoView({behavior : "smooth"});
+}
