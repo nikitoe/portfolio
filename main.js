@@ -1,5 +1,6 @@
 'use strict'
 
+// Make navbar transparent when it is on the top
 // 맨 위에 있을때 navbar를 투명하게 만든다.
 const navbar = document.querySelector('#navbar');
 const navbarHeight = navbar.getBoundingClientRect().height;
@@ -20,7 +21,16 @@ navbarMenu.addEventListener('click', (event) => {
     if(link == null) {
         return;
     }
+    navbarMenu.classList.remove('open');
     scrollIntoView(link);
+});
+
+// Navbar toggle button for small screen
+// 작은 화면을 위한 navbar 토글 버튼 만들기.
+const navbarToggle = document.querySelector('.navber__toggle-btn');
+navbarToggle.addEventListener('click', () => {
+    console.log('Yes');
+    navbarMenu.classList.toggle('open');
 });
 
 // Handle click on "contact me" button on home
