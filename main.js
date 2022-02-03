@@ -38,9 +38,52 @@ document.addEventListener('scroll', () => {
     home.style.opacity =  1 - window.scrollY / homeHeight;
 });
 
+// Show "arrow up" button when scrolling down
+// 스크롤링을 아래로 내리면 "arrow up" 버튼이 보여지게 만든다.
+const arrowUp = document.querySelector('.arrow-up')
+document.addEventListener('scroll', () => {
+    if(window.scrollY > homeHeight/2) {
+        arrowUp.classList.add('visible');
+    }else {
+        arrowUp.classList.remove('visible');
+    }
+});
+
+// Handle click on the "arrow up" button
+// "arrow up" 버튼을 클릭하면 홈 화면으로 이동한다.
+arrowUp.addEventListener('click', () => {
+    scrollIntoView('#home');
+})
+
+// Projects
+const workBtnContainer = document.querySelector('.work__categories');
+const projectContainer = document.querySelector('.work__projects');
+const projects = document.querySelectorAll('.project');
+
+workBtnContainer.addEventListener('click', (e) => {
+    const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
+    if (filter == null ) {
+        return;
+    }
+    projectContainer.classList.add('anim-out');
+    setTimeout(() => {
+        projects.forEach((project) => {
+            console.log(project.dataset.type);
+            if (filter === '*' || filter === project.dataset.type) {
+                project.classList.remove('invisible');
+            } else {
+                project.classList.add('invisible');
+            }
+        });
+        projectContainer.classList.remove('anim-out');
+    }, 300);
+    
+});
 
 
 function scrollIntoView (selector) {
     const scrollTo = document.querySelector(selector);
     scrollTo.scrollIntoView({behavior : "smooth"});
 }
+
+
