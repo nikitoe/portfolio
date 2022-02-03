@@ -65,10 +65,17 @@ workBtnContainer.addEventListener('click', (e) => {
     if (filter == null ) {
         return;
     }
+
+    // Remove selection form the previous item and select the new one
+    // 이전에 선택된 아이템에서 selection을 제거하고 세로운것으로 선택되게 한다.
+    const active = document.querySelector('.category__btn.selected');
+    active.classList.remove('selected');
+    const target = e.target.nodeName === 'BUTTON' ? e.target : e.target.parentNode;
+    target.classList.add('selected');
+
     projectContainer.classList.add('anim-out');
     setTimeout(() => {
         projects.forEach((project) => {
-            console.log(project.dataset.type);
             if (filter === '*' || filter === project.dataset.type) {
                 project.classList.remove('invisible');
             } else {
